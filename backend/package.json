@@ -11,6 +11,6 @@
     "@supabase/supabase-js": "^2.49.8",
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "vercel": "^43.0.0"
+    "vercel": "^50.41.0"
   }
 }
