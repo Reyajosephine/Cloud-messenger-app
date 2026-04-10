@@ -5,7 +5,7 @@
 // If using Vercel, use your project URL:
 // https://your-project-name.vercel.app
 // ==========================================
-const API_URL = "https://your-project-name.vercel.app";
+const API_URL = "https://cloud-messenger-app.vercel.app/";
 
 // ==========================================
 // Supabase project settings
