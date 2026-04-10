@@ -5,7 +5,8 @@
 // If using Vercel, use your project URL:
 // https://your-project-name.vercel.app
 // ==========================================
-const API_URL = "https://cloud-messenger-app.vercel.app/";
+const API_URL = "https://cloud-messenger-app.vercel.app";
+const API_BASE_URL = API_URL.replace(/\/+$/, "");
 
 // ==========================================
 // Supabase project settings
@@ -136,16 +137,18 @@ async function fetchMessages() {
     }
 
     const headers = await getAuthHeaders();
-    const response = await fetch(`${API_URL}/messages`, { headers });
+    const response = await fetch(`${API_BASE_URL}/messages`, { headers });
 
     if (!response.ok) {
-      throw new Error("Failed to fetch messages");
+      const errorBody = await response.text();
+      throw new Error(`Failed to fetch messages: ${response.status} ${errorBody}`);
     }
 
     const messages = await response.json();
     renderMessages(messages);
   } catch (error) {
     console.error("Error fetching messages:", error);
+    authStatus.textContent = "Unable to load messages. Check backend URL or login state.";
   }
 }
 
@@ -171,14 +174,15 @@ async function sendMessage() {
   try {
     const headers = await getAuthHeaders();
 
-    const response = await fetch(`${API_URL}/messages`, {
+    const response = await fetch(`${API_BASE_URL}/messages`, {
       method: "POST",
       headers,
       body: JSON.stringify({ username, text })
     });
 
     if (!response.ok) {
-      throw new Error("Failed to send message");
+      const errorBody = await response.text();
+      throw new Error(`Failed to send message: ${response.status} ${errorBody}`);
     }
 
     // Clear input and refresh chat
@@ -186,6 +190,7 @@ async function sendMessage() {
     await fetchMessages();
   } catch (error) {
     console.error("Error sending message:", error);
+    alert("Message was not sent. Check login and backend configuration.");
   }
 }
 
@@ -221,7 +226,11 @@ async function login() {
   const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
   if (error) {
     alert(error.message);
+    return;
   }
+
+  await refreshAuthUI();
+  alert("Login successful. Chat is now enabled.");
 }
 
 // Logout current user

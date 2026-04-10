@@ -4,8 +4,8 @@
   "description": "Simple messenger backend with Express on Vercel Serverless",
   "main": "api/index.js",
   "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev"
+    "dev": "node api/index.js",
+    "start": "node api/index.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.8",

@@ -128,3 +128,11 @@ app.post("/messages", requireUser, async (req, res) => {
 
 // Export for Vercel serverless runtime
 module.exports = app;
+
+// Local development entrypoint (avoids recursive `vercel dev` script issues)
+if (require.main === module) {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Backend running on http://localhost:${port}`);
+  });
+}
