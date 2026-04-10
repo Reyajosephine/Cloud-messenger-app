@@ -13,16 +13,27 @@ const app = express();
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-  throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY environment variables.");
-}
+let supabaseAdmin = null;
 
-const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-  auth: {
-    persistSession: false,
-    autoRefreshToken: false
+function getSupabaseAdmin() {
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+    return {
+      client: null,
+      configError: "Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in Vercel Environment Variables."
+    };
   }
-});
+
+  if (!supabaseAdmin) {
+    supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false
+      }
+    });
+  }
+
+  return { client: supabaseAdmin, configError: null };
+}
 
 // Enable CORS for frontend requests
 app.use(cors());
@@ -32,6 +43,11 @@ app.use(express.json());
 
 // Middleware to authenticate user with Supabase access token
 async function requireUser(req, res, next) {
+  const { client, configError } = getSupabaseAdmin();
+  if (configError) {
+    return res.status(500).json({ error: configError });
+  }
+
   const authHeader = req.headers.authorization || "";
   const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
 
@@ -39,7 +55,7 @@ async function requireUser(req, res, next) {
     return res.status(401).json({ error: "Missing Bearer token" });
   }
 
-  const { data, error } = await supabaseAdmin.auth.getUser(token);
+  const { data, error } = await client.auth.getUser(token);
   if (error || !data.user) {
     return res.status(401).json({ error: "Invalid token" });
   }
@@ -55,7 +71,9 @@ app.get("/", (req, res) => {
 
 // GET /messages -> return only current user's messages
 app.get("/messages", requireUser, async (req, res) => {
-  const { data, error } = await supabaseAdmin
+  const { client } = getSupabaseAdmin();
+
+  const { data, error } = await client
     .from("messages")
     .select("id, username, text, created_at")
     .eq("user_id", req.user.id)
@@ -77,6 +95,7 @@ app.get("/messages", requireUser, async (req, res) => {
 
 // POST /messages -> add message for current user only
 app.post("/messages", requireUser, async (req, res) => {
+  const { client } = getSupabaseAdmin();
   const { username, text } = req.body;
 
   if (!username || !text) {
@@ -89,7 +108,7 @@ app.post("/messages", requireUser, async (req, res) => {
     text: String(text)
   };
 
-  const { data, error } = await supabaseAdmin
+  const { data, error } = await client
     .from("messages")
     .insert(insertPayload)
     .select("id, username, text, created_at")
