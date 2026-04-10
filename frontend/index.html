@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Messenger</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Main chat app container -->
+  <div class="app">
+    <!-- Header section -->
+    <header class="chat-header">
+      <h1>Simple Messenger</h1>
+      <p>Private Message Yourself chat with Supabase auth</p>
+    </header>
+
+    <!-- Auth section -->
+    <section class="auth-section">
+      <input id="emailInput" type="email" placeholder="Email" />
+      <input id="passwordInput" type="password" placeholder="Password" />
+      <button id="signUpButton" type="button">Sign Up</button>
+      <button id="loginButton" type="button">Login</button>
+      <button id="logoutButton" type="button">Logout</button>
+    </section>
+
+    <!-- Logged in user status -->
+    <section class="status-section">
+      <span id="authStatus">Not logged in</span>
+    </section>
+
+    <!-- Username input section -->
+    <section class="username-section">
+      <label for="usernameInput">Display name</label>
+      <input id="usernameInput" type="text" placeholder="Name shown on your messages" maxlength="20" />
+    </section>
+
+    <!-- Chat messages display area -->
+    <section id="chatBox" class="chat-box" aria-live="polite"></section>
+
+    <!-- Message compose section -->
+    <section class="composer">
+      <input id="messageInput" type="text" placeholder="Type a message..." maxlength="250" />
+      <button id="sendButton" type="button">Send</button>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>

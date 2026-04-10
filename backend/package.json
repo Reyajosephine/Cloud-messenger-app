@@ -1,0 +1,16 @@
+{
+  "name": "simple-messenger-backend",
+  "version": "1.0.0",
+  "description": "Simple messenger backend with Express on Vercel Serverless",
+  "main": "api/index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.8",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "vercel": "^43.0.0"
+  }
+}
