@@ -364,22 +364,21 @@ That gives a complete cloud-deployed private one-way messenger.
 Use this section as a visual checklist while setting up and deploying.
 
 Tip:
-- Take your own screenshots at each step and compare with the expected output below.
 - If your screen does not match the expected output, fix that step before continuing.
 
 ### Step A: Supabase Project Created
 
-What to capture:
-1. Supabase dashboard home with your project name visible.
+<img width="1919" height="1004" alt="Screenshot 2026-04-14 130240" src="https://github.com/user-attachments/assets/e26a44fc-cbd0-4619-9340-e004b9ab7a80" />
+
 
 Expected output:
-1. Project status is active.
+1. Project status is active/Healthy.
 2. Left menu shows Authentication, SQL Editor, and Project Settings.
 
 ### Step B: Supabase API Keys Collected
 
-What to capture:
-1. Project Settings -> API page.
+<img width="1919" height="995" alt="image" src="https://github.com/user-attachments/assets/636a68f1-1e50-471c-b65f-7a1fa824b554" />
+
 
 Expected output:
 1. You can see Project URL.
@@ -392,8 +391,8 @@ Important check:
 
 ### Step C: Email Authentication Enabled
 
-What to capture:
-1. Authentication -> Providers -> Email page.
+<img width="1919" height="999" alt="image" src="https://github.com/user-attachments/assets/8e882a50-c675-48ba-b5d2-a5deb027165d" />
+
 
 Expected output:
 1. Email provider is enabled.
@@ -401,9 +400,8 @@ Expected output:
 
 ### Step D: Messages Table + Policies Created
 
-What to capture:
-1. SQL Editor showing successful SQL run.
-2. Table Editor showing `messages` table.
+<img width="1600" height="901" alt="image" src="https://github.com/user-attachments/assets/c48899f2-9c5e-4a0e-a264-dc138fe51074" />
+
 
 Expected output:
 1. `messages` table exists with columns:
@@ -417,8 +415,7 @@ Expected output:
 
 ### Step E: Backend Local Run Works
 
-What to capture:
-1. Terminal after running `npm run dev` in backend.
+<img width="1364" height="410" alt="image" src="https://github.com/user-attachments/assets/bcfe597d-a1b6-42d1-bb65-238315cd39d2" />
 
 Expected output:
 1. Backend starts without crash.
@@ -426,9 +423,12 @@ Expected output:
 
 ### Step F: Backend Deployed on Vercel
 
-What to capture:
-1. Vercel project deployment page.
-2. Environment Variables page.
+<img width="1914" height="924" alt="image" src="https://github.com/user-attachments/assets/4b517f12-256c-4e78-b89b-73cbb330cf5c" />
+
+<img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/6082f06e-0e18-46c3-b269-0e4f26b16c27" />
+
+<img width="1918" height="1066" alt="image" src="https://github.com/user-attachments/assets/bf3c3e0e-b31f-4b50-b1d5-e57702a98bce" />
+
 
 Expected output:
 1. Latest deployment status shows Ready.
@@ -437,8 +437,7 @@ Expected output:
 
 ### Step G: Frontend Config Updated
 
-What to capture:
-1. `script.js` config section.
+<img width="1383" height="504" alt="image" src="https://github.com/user-attachments/assets/c3a5258e-85a1-4f3b-8066-9378d8173e78" />
 
 Expected output:
 1. `API_URL` points to your Vercel backend URL.
