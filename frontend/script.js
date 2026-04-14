@@ -5,7 +5,7 @@
 // If using Vercel, use your project URL:
 // https://your-project-name.vercel.app
 // ==========================================
-const API_URL = "https://cloud-messenger-app.vercel.app";
+const API_URL = "https://your-backend-name.vercel.app";
 const API_BASE_URL = API_URL.replace(/\/+$/, "");
 
 // ==========================================
@@ -14,8 +14,8 @@ const API_BASE_URL = API_URL.replace(/\/+$/, "");
 // 2) Enable Email auth in Authentication settings
 // 3) Paste project URL + anon key below
 // ==========================================
-const SUPABASE_URL = "https://dcnbrtalpjojepwfocou.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRjbmJydGFscGpvamVwd2ZvY291Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NzMwMTgsImV4cCI6MjA5MTM0OTAxOH0.Rmfk6MskIeCqC4P_dSd-Ut_3RsCjvnALXi6Gn4MT2UE";
+const SUPABASE_URL = "your-supabase-url";
+const SUPABASE_ANON_KEY = "your-supabase-anon-key";
 
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
