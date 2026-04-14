@@ -400,7 +400,7 @@ Expected output:
 
 ### Step D: Messages Table + Policies Created
 
-<img width="1600" height="901" alt="image" src="https://github.com/user-attachments/assets/c48899f2-9c5e-4a0e-a264-dc138fe51074" />
+<img width="2500" height="1527" alt="image" src="https://github.com/user-attachments/assets/09954dcd-8785-4bfc-ac49-8a6641ecbbd6" />
 
 
 Expected output:
@@ -446,9 +446,7 @@ Expected output:
 
 ### Step H: Azure Static Web App Workflow Ready
 
-What to capture:
-1. GitHub Actions secrets page.
-2. Workflow file path.
+<img width="1508" height="935" alt="image" src="https://github.com/user-attachments/assets/54632141-06d3-427d-aab3-33fcece67387" />
 
 Expected output:
 1. `AZURE_STATIC_WEB_APPS_API_TOKEN` secret exists.
@@ -456,59 +454,22 @@ Expected output:
 
 ### Step I: Frontend Deployed on Azure
 
-What to capture:
-1. Azure Static Web App overview page.
-2. GitHub Actions run status page.
+<img width="1919" height="1006" alt="image" src="https://github.com/user-attachments/assets/fa28ccc3-871b-4cf9-8759-f49c11198bcd" />
 
 Expected output:
 1. Azure app status is healthy.
 2. GitHub Action for deployment is green.
 3. Frontend URL opens your chat page.
 
-### Step J: Account Creation + Email Verification
+### Step J: Cloud Messenger App
 
-What to capture:
-1. Frontend signup form filled.
-2. Verification email received.
-3. Supabase user record.
+<img width="1919" height="993" alt="image" src="https://github.com/user-attachments/assets/1de5d1a4-62fe-478a-a05a-e8ee0da4d0b2" />
 
 Expected output:
 1. Signup shows success message.
 2. Verification email arrives in inbox/spam.
 3. After clicking verification link, user can log in.
 
-### Step K: Login and Auth Status
-
-What to capture:
-1. Frontend after login.
-
-Expected output:
-1. Auth status text shows logged-in email.
-2. Message input and send button are enabled.
-
-### Step L: Send Message and Polling
-
-What to capture:
-1. Before send (empty chat or previous messages).
-2. After send.
-3. Network tab showing `/messages` requests.
-
-Expected output:
-1. Sent message appears in chat with username + timestamp.
-2. `POST /messages` returns success.
-3. `GET /messages` runs every ~2 seconds and returns updated list.
-
-### Step M: Private Data Validation
-
-What to capture:
-1. User A account chat.
-2. User B account chat.
-
-Expected output:
-1. User A cannot see User B messages.
-2. User B cannot see User A messages.
-
-This confirms token validation + per-user access are working correctly.
 
 ## 17. Final Demo Checklist (Share-Ready)
 
