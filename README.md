@@ -469,7 +469,7 @@ Expected output:
 1. Signup shows success message.
 2. Verification email arrives in inbox/spam.
 3. After clicking verification link, user can log in.
-4. (Live cloud Messenger app)[https://agreeable-coast-0ca04e51e.7.azurestaticapps.net/]
+4. Live cloud Messenger app: https://agreeable-coast-0ca04e51e.7.azurestaticapps.net/
 
 
 ## 17. Final Demo Checklist (Share-Ready)
